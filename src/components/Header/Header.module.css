@@ -1,0 +1,17 @@
+.container{
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper{
+    display: grid;
+    gap: 10px;
+    width: 40%;
+}
+
+.slctsContainer{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    gap: 20px;
+}

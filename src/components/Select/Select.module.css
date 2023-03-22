@@ -1,0 +1,9 @@
+.slct{
+    width: 100%;
+    height: 100%;
+    border: var(--main-border);
+}
+
+.label{
+    font-size: 14px;
+}

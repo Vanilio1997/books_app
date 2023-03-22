@@ -1,0 +1,10 @@
+.booksContainer{
+    padding: 10px 40px;
+}
+
+.wrapper{
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
