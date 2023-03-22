@@ -1,7 +1,7 @@
 export interface IBookCard{
     title:string
-    authors: string
-    theme: string
+    authors: string[]
+    theme: string[]
     picture: string
-    id:number
+    id:string
 }

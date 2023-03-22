@@ -3,6 +3,6 @@ import {IResultCountProps} from './types'
 
 export const ResultCount = ({count}:IResultCountProps) => {
   return (
-    <div>{count}</div>
+    <div>Found {count} results</div>
   )
 }

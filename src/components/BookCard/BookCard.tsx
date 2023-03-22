@@ -3,7 +3,6 @@ import { IBookCard } from './types'
 import s from './BookCard.module.css'
 
 export const BookCard = ({title, authors , theme, picture, id}:IBookCard) => {
-
     
   return (
     <div className={s.container}>

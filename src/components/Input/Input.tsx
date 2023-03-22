@@ -7,7 +7,7 @@ import '../../styles/common.css'
 const Input = ({onChange}:IInputProps) => {
   return (
     <>
-      <input className={s.inp} onChange={onChange}/>
+      <input className={s.inp} onChange={(e) => onChange(e.target.value)}/>
     </>
   )
 }

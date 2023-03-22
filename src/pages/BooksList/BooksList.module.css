@@ -1,5 +1,5 @@
 .booksContainer{
-    padding: 10px 40px;
+    padding: 10px 40px;;
 }
 
 .wrapper{
@@ -7,4 +7,5 @@
     gap: 40px;
     flex-wrap: wrap;
     justify-content: center;
+
 }

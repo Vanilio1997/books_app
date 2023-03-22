@@ -5,8 +5,8 @@ export const booksApi = createApi({
     baseQuery: fetchBaseQuery({baseUrl: process.env.REACT_APP_API_URL }),
     endpoints: (build )=>({
         getBooks: build.query({
-            query:({ categories, orderBy, bookName, maxResults, startIndex}) => {
-                return  `?q=${bookName}+${categories}&orderBy=${orderBy}&maxResults=${maxResults}&startIndex=${startIndex}&key=${process.env.REACT_APP_API_KEY}`
+            query:({ orderBy, bookName, maxResults, startIndex}) => {
+                return  `?q=${bookName}:&orderBy=${orderBy}&maxResults=${maxResults}&startIndex=${startIndex}&key=${process.env.REACT_APP_API_KEY}`
             }
         }),
         getBook: build.query({

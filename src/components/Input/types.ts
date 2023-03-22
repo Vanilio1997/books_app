@@ -1,3 +1,3 @@
 export interface IInputProps {
-    onChange: (value: any) => void
+    onChange: (value: string) => void
 }
