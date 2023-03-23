@@ -20,14 +20,12 @@ export interface IBooksApi{
 export interface IRequestParams{
     bookName: string
     orderBy: string
+    category: string
     maxResults: number
     startIndex: number
 }
 
-export type TFilter ={ categories: 'all' | 'art' | 'biography' | 'computers' | 'history' | 'medical' | 'poetry'}
-
 export interface IStore{
     booksApi: IBooksApi
     requestParams: IRequestParams
-    filter:TFilter
 }

@@ -5,6 +5,7 @@ const getRequestParamsSlice = createSlice({
     name:'getRequestParamsSlice',
     initialState :{
         orderBy: 'relevance',
+        category: '',
         bookName: '',
         maxResults:30,
         startIndex: 0
@@ -16,15 +17,18 @@ const getRequestParamsSlice = createSlice({
         changeBookName:(state,action: PayloadAction<string> ) => {
             state.bookName = action.payload
         },
-        changeMaxResults:(state) => {
-            state.maxResults = state.maxResults + 30
+        changeFilterCategory:(state,action: PayloadAction<string> ) => {
+            state.category = action.payload
         },
         changeStartIndex:(state) => {
             state.startIndex = state.startIndex + 30
+        },
+        resetStartIndex:(state) => {
+            state.startIndex = 0
         }
     }
 })
 
 export default getRequestParamsSlice.reducer
 
-export const {changeBookName,  changeMaxResults, changeSortingCategory, changeStartIndex} = getRequestParamsSlice.actions
+export const {changeBookName, changeSortingCategory, changeStartIndex, changeFilterCategory, resetStartIndex} = getRequestParamsSlice.actions

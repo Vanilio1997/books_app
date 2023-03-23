@@ -1,6 +1,6 @@
-import React,{useState, useEffect} from 'react'
+
 import Header from 'components/Header'
-import BookCard from 'components/BookCard'
+import Button from 'components/Buttton'
 import s from './BooksList.module.css'
 import { useGetBooksQuery } from 'redux/slice/getBooksSlice'
 import Loader from 'components/Loader'
@@ -9,56 +9,49 @@ import { IRequestParams } from 'types/IStore'
 import { IGetBooksQueryInterface } from './types'
 import { IResponseBooksInterface } from 'types/IResponse'
 import { IItemsBooks } from 'types/IResponse'
-import imgBook from '../../media/images/books.jpg'
 import ResultCount from 'components/ResultCount'
-
+import BooksListMap from 'components/BooksListMap'
+import { useDispatch } from 'react-redux'
+import {  changeStartIndex } from 'redux/slice/getRequestParamsSlice'
+import { useState , useEffect} from 'react'
 
 export const BooksList = () => {
   const requestParams:IRequestParams = UseTypedSelector(store => store.requestParams)
-  const filter = UseTypedSelector(store => store.filter.categories)
-  const {data = [], isLoading}   = useGetBooksQuery(requestParams)
-  const [filtredData, setFiltredData] = useState({})
+  const {data = [], isLoading, isError}   = useGetBooksQuery(requestParams)
+  const [ paginationData, setPaginationData] = useState<any>(null)
+  const [isPagination , setIsPagination] = useState(false)
 
+  const dispatch = useDispatch()
+  function getMoreBooks(){
+    dispatch(changeStartIndex())
+    setIsPagination(true)
+  }
 
-  
-  useEffect(() =>{
-    console.log(1234);
-    
-    if(filter !== 'all'){
-      const filtredItems = data?.items?.filter((book:IItemsBooks) => book.volumeInfo?.categories[0].toLowerCase().includes(filter))
-      console.log(filtredItems);
-      setFiltredData({...data , items: filtredItems})
+  useEffect(()=>{
+    if(paginationData && !Array.isArray(paginationData)  && isPagination ){
+        setPaginationData({ ...paginationData , items: [ ...paginationData?.items , ...data?.items ]})
+        setIsPagination(false)
+    } else {
+      setPaginationData(data)
     }
-    setFiltredData(data)
-  }, [filter])
+  }, [data])
 
-  // console.log(filtredData);
-  // console.log(filter , '------------------');
-  
   return (
     <div>
         <Header/>
-        <ResultCount count={data?.totalItems} />
+        <ResultCount count={paginationData?.totalItems} />
         <div className={s.booksContainer}>
-            <div className={s.wrapper}>
               { 
                 isLoading 
                 ?                
                   <Loader />                  
                 :
-                  data.items.map((book:IItemsBooks) => (
-                    <BookCard  
-                      title={book.volumeInfo.title} 
-                      authors={book.volumeInfo.authors} 
-                      id={book.id} 
-                      theme={book.volumeInfo.categories}
-                      picture={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : imgBook as string}
-                      key={book.id}
-                    />
-                  ))
+                  <BooksListMap  booksData={paginationData.items} />
               }
-            </div>
         </div>
+        
+          <Button text='Load more'  onClick={getMoreBooks}/>
+        
     </div>
   )
 }
