@@ -14,7 +14,7 @@ import { useState , useEffect} from 'react'
 
 export const BooksList = () => {
   const requestParams:IRequestParams = UseTypedSelector(store => store.requestParams)
-  const {data , isLoading, isError} = useGetBooksQuery(requestParams)
+  const {data } = useGetBooksQuery(requestParams)
   const [ paginationData, setPaginationData] = useState<any>(null)
   const [isPagination , setIsPagination] = useState(false)
   const dispatch = useDispatch()
@@ -25,14 +25,12 @@ export const BooksList = () => {
 
   useEffect(()=>{
     if(paginationData && !Array.isArray(paginationData)  && isPagination && data ){
-        setPaginationData({ ...paginationData , items: [ ...paginationData?.items , ...data?.items ]})
+       data?.items && setPaginationData({ ...paginationData , items: [ ...paginationData?.items , ...data?.items ]})
         setIsPagination(false)
     } else {
       setPaginationData(data)
     }
   }, [data])
-
-
 
   return (
     <div>

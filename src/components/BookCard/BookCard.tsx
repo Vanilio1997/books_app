@@ -14,7 +14,11 @@ export const BookCard = ({title, authors , theme, picture, id}:IBookCard) => {
           <div className={s.textContainer}>
               <span className={s.theme}>{theme}</span>
               <div className={s.title}><strong>{title}</strong></div>
-              <span className={s.authors}>{authors}</span>
+              {
+                authors && authors.map( author => (
+                  <span className={s.authors}>{author}</span>
+                ))
+              }
           </div>
       </div>
     </NavLink>
