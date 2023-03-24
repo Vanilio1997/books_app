@@ -7,9 +7,9 @@ import s from './BookInfo.module.css'
 
 export const BookInfo = () => {
   const {id} = useParams()
-  const {data , isLoading, isError} = useGetBookQuery(id as string)
+  const {data , isLoading} = useGetBookQuery(id as string)
 
-   console.log(isError);
+
    
   if(isLoading) return <Loader />
 
