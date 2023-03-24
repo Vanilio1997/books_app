@@ -2,3 +2,13 @@
   text-align: center;
 }
 
+a {
+  color: #000000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+:active, :hover, :focus {
+  outline: 0;
+  outline-offset: 0;
+}

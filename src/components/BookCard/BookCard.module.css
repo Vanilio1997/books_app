@@ -6,7 +6,7 @@
 
 .bookImg{
     width: 300px;
-    height:  300px;
+    height: 300px;
 }
 
 .textContainer{
@@ -25,4 +25,14 @@
 .title{
     margin: 10px 0;
     font-size: 17px;
+}
+
+@media  (max-width: 800px){
+    .bookImg{
+        height: 250px;
+        width: 250px;
+    }
+    .container{
+        width: 250px;
+    }
 }

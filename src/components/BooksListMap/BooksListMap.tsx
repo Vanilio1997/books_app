@@ -4,16 +4,15 @@ import { IItemsBooks } from 'types/IResponse'
 import imgBook from '../../media/images/books.jpg'
 import s from './BooksListMat.module.css'
 
-export const BooksListMap = ({booksData}:any) => {
- 
-  
+export const BooksListMap = ({booksData}: {booksData:IItemsBooks[]}) => {
+
   return (
     <div className={s.wrapper}>
         {
           booksData?.length 
           ?
             booksData?.map((book:any)=>(
-                <BookCard  
+              <BookCard  
                 title={book.volumeInfo.title} 
                 authors={book.volumeInfo.authors} 
                 id={book.id} 
@@ -23,7 +22,7 @@ export const BooksListMap = ({booksData}:any) => {
               />
             ))
           :
-            <div> По данным критерия данных не найдено</div>
+            <div>Books not found</div>
             
         }
     </div>

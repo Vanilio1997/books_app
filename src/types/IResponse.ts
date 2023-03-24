@@ -15,16 +15,16 @@ interface IImageLinks{
 
 interface IVolumeInfo{
     title: string
-    subtitle: string
-    authors: string[]
+    subtitle?: string
+    authors?: string[]
     publishedDate: string
-    description: string
+    description?: string
     industryIdentifiers: ITypesIdentifier[]
     readingModes: IReadingModel
     imageLinks?: IImageLinks
     pageCount: number
     printType: string
-    categories: string[]
+    categories?: string[]
     maturityRating: string
     allowAnonLogging: string
     contentVersion: string
@@ -69,7 +69,7 @@ export interface IItemsBooks{
     volumeInfo: IVolumeInfo
     saleInfo: ISaleInfo
     accessInfo: IAccessInfo
-    searchInfo: ISearchInfo
+    searchInfo?: ISearchInfo
 }
 
 export interface IResponseBooksInterface{

@@ -6,7 +6,7 @@ const Select = ({selectData , onChange,label}: ISelectProps) => {
    
   return (
     <>
-      <span className={s.label}>{label}</span>
+      <div className={s.label}>{label}</div>
       <select className={s.slct} onChange={(e) => onChange(e.target.value)} defaultValue={selectData[0]}>
           {
             selectData.map( (data,index) => (

@@ -1,4 +1,6 @@
+import { MouseEventHandler } from "react"
+
 export interface IButtonProps {
-    onClick: (value:any) => void
+    onClick: MouseEventHandler<HTMLButtonElement>
     text: string
 }
